@@ -6,7 +6,7 @@ module.exports = function (sequelize, DataTypes) {
             primaryKey: true,
             autoIncrement: true
         },
-        datatime: {
+        datetime: {
             type: DataTypes.INTEGER,
             allowNull: false
         }
