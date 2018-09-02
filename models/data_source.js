@@ -28,8 +28,8 @@ module.exports = function (sequelize, DataTypes) {
 function _associate(models) {
 models.Data_source.hasMany(models.Access_information, {foreignKey: 'Data_source_id'});
 models.Data_source.belongsToMany(models.Configuration_set, {
-                                                            as: 'Configuration_set_data',
-                                                            through: 'Configuration_set_data_source',
+                                                            as: 'Data_source',
+                                                            through: 'Data_conf_link',
                                                             foreignKey: 'Data_source_id'
                                                             });
 }

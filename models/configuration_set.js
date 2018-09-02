@@ -29,10 +29,10 @@ function _associate(models) {
   models.Configuration_set.hasMany(models.Analysis_result, {foreignKey: 'Configuration_set_id'});
 
   models.Configuration_set.belongsToMany(models.Data_source, {
-                                                              as: 'Configuration_set_data',
-                                                              through: 'Configuration_set_data_source',
-                                                              foreignKey: 'Configuration_set_id'
-                                                              });
+                                                             as: 'Configuration_set',
+                                                             through: 'Data_conf_link',
+                                                             foreignKey: 'Configuration_set_id'
+                                                             });
 
 
 }
