@@ -1,0 +1,32 @@
+{
+  "name": "stats-engine.web-service",
+  "version": "1.0.0",
+  "description": "Gives access to the web app and database, as a proxy.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.kyriopolis.fr/annual-project/web-service.git"
+  },
+  "keywords": [
+    "stats-engine",
+    "api",
+    "rest",
+    "restful",
+    "analysis",
+    "results"
+  ],
+  "author": "Florian CHAMPAUD, Sébastien GAUTHIER, Paul VECHOT",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.38.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.5"
+  }
+}

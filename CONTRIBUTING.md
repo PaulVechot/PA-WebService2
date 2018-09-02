@@ -1,0 +1,6 @@
+- Follow the established workflow
+- Document your code using [JSDoc](http://usejsdoc.org/)
+- Conform to the established file hierarchy
+- Keep your code as modular as possible
+- Use JSHint and respect the project's `.jshintrc`
+- Mimick existing code's style for cohesion
