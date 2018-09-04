@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
+const config = require('../config');
 const Op = Sequelize.Op;
 const basename = path.basename(module.filename);
 
@@ -12,10 +13,10 @@ ModelIndex.getModel = function (modelName) {
     return this[modelName];
 };
 
-const sequelize = new Sequelize('project-sample', 'root', 'root', {
-    host: 'localhost',
-    dialect: 'mysql',
-    port: 3306,
+const sequelize = new Sequelize(config.db.name, config.db.login, config.db.password, {
+    host: config.db.host,
+    dialect: config.db.dialect,
+    port: config.db.port,
     operatorsAliases: Op
 });
 

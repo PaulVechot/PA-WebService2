@@ -3,6 +3,7 @@
 const express = require('express');
 const ModelIndex = require('./models');
 const RouteManager = require('./routes');
+const config = require('./config');
 
 ModelIndex
 .openDatabase()
@@ -21,7 +22,7 @@ function _startServer() {
 
     RouteManager.attach(app);
 
-    app.listen(8080, function() {
-        console.log('Server started on 8080...');
+    app.listen(config.webapp.port, function() {
+        console.log('Server started on ' + config.webapp.port + '...');
     });
 }
