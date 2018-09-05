@@ -10,8 +10,8 @@ const Analysis_resultRouter = express.Router();
 
 Analysis_resultRouter.get('/', function(req, res) {
     Analysis_resultController.getAll()
-    .then((projects) => {
-        res.json(projects);
+    .then((analysis_result) => {
+        res.json(analysis_result);
     })
     .catch((err) => {
         console.error(err);

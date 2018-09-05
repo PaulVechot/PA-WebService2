@@ -6,10 +6,27 @@ const Analysis_result = ModelIndex.Analysis_result;
 const Analysis_resultController = function() {};
 
 Analysis_resultController.getAll = function() {
-  Analysis_result.findAll().then(Analysis_result => {
-    return JSON.stringify(Analysis_result);
-  });
-};
+  // TODO STUB
+      return {
+          'then': function (callback) {
+              callback([
+                  {   'id': 1,
+                      'date': '2018-01-23',
+                      'configset': 'Ventes 2017',
+                      'datasources': [ { 'label': 'bdd_ventes' } ],
+                  },
+                  {   'id': 2,
+                      'date': '2018-02-15',
+                      'configset': 'Résultat 2017',
+                      'datasources': [ { 'label': 'bdd_ventes' },
+                                       { 'label': 'bdd_achats' } ],
+                  }
+              ]);
+              return this;
+          },
+          'catch': function (callback) { /* NO ERROR WILL HAPPEN IN THE STUB */ }
+      };
+  };
 Analysis_resultController.add = function(id, datetime) {
     return Analysis_result.create({
         id: id,

@@ -4,7 +4,7 @@ var config = {};
 
 //Webservice configuration
 config.webapp = {};
-config.webapp.dir = process.env.APP_DIR || '/var/www/app/';
+config.webapp.dir = process.env.APP_DIR || 'E:/Documents/GitHub/PA-StatViewer';
 config.webapp.port = '8080';
 
 
