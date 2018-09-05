@@ -1,38 +1,50 @@
 // /web-service/session/login//logging in -
-//
+
 // /web-service/session/logout//logging out -
+
+
+'use strict';
+
+const express = require('express');
+const jwt = require('jsonwebtoken');
+const controllers = require('../controllers');
+const bodyParser = require('body-parser');
+const SessionControler = controllers.SessionController;
+
+const SessionRouter = express.Router();
+SessionRouter.use(bodyParser.json());
+//AssociationRouter.use(bodyParser.json());
+
+SessionRouter.get('/', function(req, res) {
+  res.json({
+    message: 'welcome tt'
+  });
+});
+SessionRouter.post('/', (req, res) => {
+  console.log(req);
+  const user = {
+    username: req.body.username,
+    password: req.body.password
+  };
+  if ((user.username === 'paul.vechot@gmail.com') && (user.password === 'toto')) {
+    res.json({
+      message: 'ok'
+    });
+
+  }
+});
 //
-//
-// 'use strict';
-//
-// const express = require('express');
-// //const bodyParser = require('body-parser');
-// const controllers = require('../controllers');
-// const AssociationController = controllers.AssociationController;
-//
-// const AssociationRouter = express.Router();
-// //AssociationRouter.use(bodyParser.json());
-//
-// AssociationRouter.get('/', function(req, res) {
-//     AssociationController.getAll()
-//     .then((Association) => {
-//         res.json(Association);
-//     })
-//     .catch((err) => {
-//         console.error(err);
-//         res.status(500).end();
+// SessionRouter.post('/', (req, res) => {
+//   const user = {
+//     username: req.username,
+//     password: req.password
+//   };
+//   jwt.sign({user:user}, 'secretkey', (err, token)=> {
+//       res.json({
+//         token : token
+//       });
 //     });
 // });
-//
-// AssociationRouter.get('/:resultId', function(req, res) {
-//     AssociationController.getStatsFor(req.params.resultId)
-//     .then((stats) => {
-//         res.json(stats);
-//     })
-//     .catch((err) => {
-//         console.error(err);
-//         res.status(500).end();
-//     });
-// });
-//
-// module.exports = AssociationRouter;
+
+
+module.exports = SessionRouter;
