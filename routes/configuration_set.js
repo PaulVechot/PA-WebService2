@@ -3,13 +3,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const controllers = require('../controllers');
-const ConfiguationController = controllers.ConfiguationController;
+const Configuration_setController = controllers.Configuration_setController;
 
-const ConfiguationRouter = express.Router();
-ConfiguationRouter.use(bodyParser.json());
+const ConfigurationRouter = express.Router();
+ConfigurationRouter.use(bodyParser.json());
 
-ConfiguationRouter.get('/', function(req, res) {
-    ConfiguationController.getAll()
+ConfigurationRouter.get('/', function(req, res) {
+    Configuration_setController.getAll()
     .then((Configuation) => {
         res.json(Configuation);
     })
@@ -19,8 +19,8 @@ ConfiguationRouter.get('/', function(req, res) {
     });
 });
 
-ConfiguationRouter.get('/:resultId', function(req, res) {
-    ConfiguationController.getStatsFor(req.params.resultId)
+ConfigurationRouter.get('/:resultId', function(req, res) {
+    Configuration_setController.getStatsFor(req.params.resultId)
     .then((stats) => {
         res.json(stats);
     })
@@ -30,21 +30,23 @@ ConfiguationRouter.get('/:resultId', function(req, res) {
     });
 });
 
-ConfiguationRouter.post('/', function(req, res) {
+ConfigurationRouter.post('/', function(req, res) {
   const id = req.body.id;
   const label = req.body.label;
+  console.log(id);
+  console.log(label);
   if(id === undefined || label === undefined) {
-    res.status(400).end();
+   res.status(400).end();
     return;
   }
-  TaskController.add(parseInt(id), label)
+  Configuration_setController.add(parseInt(id), label)
   .then((configuration_set) => {
     res.status(201).json(configuration_set);
   })
   .catch((err) => {
     res.status(500).end();
-  })
+  });
 });
 
 
-module.exports = ConfiguationRouter;
+module.exports = ConfigurationRouter;
