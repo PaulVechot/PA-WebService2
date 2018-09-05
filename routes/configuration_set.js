@@ -10,8 +10,8 @@ ConfigurationRouter.use(bodyParser.json());
 
 ConfigurationRouter.get('/', function(req, res) {
     Configuration_setController.getAll()
-    .then((Configuation) => {
-        res.json(Configuation);
+    .then((configuration_set) => {
+        res.json(configuration_set);
     })
     .catch((err) => {
         console.error(err);
@@ -19,22 +19,10 @@ ConfigurationRouter.get('/', function(req, res) {
     });
 });
 
-ConfigurationRouter.get('/:resultId', function(req, res) {
-    Configuration_setController.getStatsFor(req.params.resultId)
-    .then((stats) => {
-        res.json(stats);
-    })
-    .catch((err) => {
-        console.error(err);
-        res.status(500).end();
-    });
-});
 
 ConfigurationRouter.post('/', function(req, res) {
   const id = req.body.id;
   const label = req.body.label;
-  console.log(id);
-  console.log(label);
   if(id === undefined || label === undefined) {
    res.status(400).end();
     return;

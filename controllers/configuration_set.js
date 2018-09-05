@@ -6,10 +6,34 @@ const Configuration_set = ModelIndex.Configuration_set;
 const Configuration_setController = function() {};
 
 Configuration_setController.getAll = function() {
-  Configuration_set.findAll().then(Configuration_set => {
-    console.log(JSON.stringify(Configuration_set))
-  });
+  return Configuration_set.findAll();
 };
+// Configuration_setController.getAll = function(search, limit, offset) {
+//   const options = {
+//     include: [{
+//       model: ModelIndex.Task,
+//       as: 'tasks',
+//       include: [{
+//         model: ModelIndex.User,
+//         as: 'users'
+//       }]
+//     }]
+//   };
+//   const where = {};
+//   if(search !== undefined) {
+//     where.id = {
+//       [Op.like]: `${search}%`
+//     };
+//   }
+//   options.where = where;
+//   if(limit !== undefined) {
+//     options.limit = limit;
+//   }
+//   if(offset !== undefined) {
+//     options.offset = offset;
+//   }
+//   return Configuration_setController.findAll(options);
+// };
 Configuration_setController.add = function(id, label) {
     return Configuration_set.create({
         id: id,
