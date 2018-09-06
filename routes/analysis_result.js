@@ -23,14 +23,14 @@ Analysis_resultRouter.get('/', function(req, res) {
 Analysis_resultRouter.post('/', function(req, res) {
   const id = req.body.id;
   const date_time = req.body.date_time;
-  console.log(id, date_time);
+//  console.log(id, date_time);
   if(id === undefined || date_time === undefined) {
    res.status(400).end();
     return;
   }
   Analysis_resultController.add(parseInt(id), date_time)
   .then((analysis_result) => {
-    console.log(id, date_time);
+    //console.log(id, date_time);
     res.status(201).json(analysis_result);
   })
   .catch((err) => {

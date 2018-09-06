@@ -18,5 +18,13 @@ UserController.add = function(id, name, password_hash) {
         password_hash: password_hash
     });
 };
+UserController.authorise = function(username, password) {
+    return User.find({
+      where:{
+        name: username,
+        password_hash: password
+      }
+    });
+};
 
   module.exports = UserController;
