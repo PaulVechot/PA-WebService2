@@ -27,7 +27,7 @@ ConfigurationRouter.post('/', function(req, res) {
   const label = req.body.label;
   if(id === undefined || label === undefined) {
    res.status(400).end();
-   LoggerController.log("analysis_result.txt", config.err.e400);
+   LoggerController.log("configuration_set.txt", config.err.e400);
     return;
   }
   Configuration_setController.add(parseInt(id), label)
@@ -36,7 +36,7 @@ ConfigurationRouter.post('/', function(req, res) {
   })
   .catch((err) => {
     res.status(500).end();
-    LoggerController.log("analysis_result.txt", config.err.e500);
+    LoggerController.log("configuration_set.txt", config.err.e500);
   });
 });
 
