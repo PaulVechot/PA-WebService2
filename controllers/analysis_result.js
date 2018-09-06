@@ -12,34 +12,35 @@ Analysis_resultController.getAll = function() {
     return JSON.stringify(Access_information);
   });
 };
-  // // TODO STUB
-  //     return {
-  //         'then': function (callback) {
-  //             callback([
-  //                 {   'id': 1,
-  //                     'date': '2018-01-23',
-  //                     'configset': 'Ventes 2017',
-  //                     'datasources': [ { 'label': 'bdd_ventes' } ],
-  //                 },
-  //                 {   'id': 2,
-  //                     'date': '2018-02-15',
-  //                     'configset': 'Résultat 2017',
-  //                     'datasources': [ { 'label': 'bdd_ventes' },
-  //                                      { 'label': 'bdd_achats' } ],
-  //                 }
-  //             ]);
-  //             return this;
-  //         },
-  //       
-  //     };
-  // };
+
 Analysis_resultController.add = function(id, date_time) {
     return Analysis_result.create({
         id: id,
         date_time: date_time
     });
 };
-
+module.exports = Analysis_resultController;
+// // TODO STUB
+//     return {
+//         'then': function (callback) {
+//             callback([
+//                 {   'id': 1,
+//                     'date': '2018-01-23',
+//                     'configset': 'Ventes 2017',
+//                     'datasources': [ { 'label': 'bdd_ventes' } ],
+//                 },
+//                 {   'id': 2,
+//                     'date': '2018-02-15',
+//                     'configset': 'Résultat 2017',
+//                     'datasources': [ { 'label': 'bdd_ventes' },
+//                                      { 'label': 'bdd_achats' } ],
+//                 }
+//             ]);
+//             return this;
+//         },
+//
+//     };
+// };
 // Analysis_resultController.getStatsFor = function(resultId) {
 //     // TODO STUB
 //     return {
@@ -90,5 +91,3 @@ Analysis_resultController.add = function(id, date_time) {
 //
 //     };
 // };
-
-module.exports = Analysis_resultController;

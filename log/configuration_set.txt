@@ -1,0 +1,5 @@
+function (){
+  var datetime = LoggerController.dateFr() + " "  +
+                 LoggerController.time() + "\n";
+  return datetime;
+}High chance, entry undefined

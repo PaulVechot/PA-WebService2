@@ -22,7 +22,8 @@ config.log = {};
 
 //For each table
 config.log.log_location = "E:/Documents/GitHub/PA-WebService2/log/";
-config.log.logall_location = "E:/Documents/GitHub/PA-WebService2/log/logall.txt";
+config.log.logall_location =
+"E:/Documents/GitHub/PA-WebService2/log/logall.txt";
 module.exports = config;
 
 //error message

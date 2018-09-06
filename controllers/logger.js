@@ -40,7 +40,7 @@ LoggerController.datetime = function(){
 LoggerController.logOne = function(file, err_msg){
   fs.writeFile(
               config.log.log_location + file,
-              LoggerController.datetime + err_msg + "\n",
+              LoggerController.datetime() + err_msg + "\n",
               function (err){
                 if(err){
                   throw err;
@@ -52,7 +52,8 @@ LoggerController.logOne = function(file, err_msg){
 LoggerController.logAll = function(file, err_msg){
   fs.writeFile(
               config.log.logall_location,
-              LoggerController.datetime + err_msg + "\n",
+              LoggerController.datetime() + "\n"+
+              err_msg + "\n" + "_______________________________",
               function (err){
                 if(err){
                   throw err;
