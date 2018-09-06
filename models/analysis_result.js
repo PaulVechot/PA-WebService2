@@ -6,8 +6,8 @@ module.exports = function (sequelize, DataTypes) {
             primaryKey: true,
             autoIncrement: true
         },
-        datetime: {
-            type: DataTypes.INTEGER,
+        date_time: {
+            type: DataTypes.STRING,
             allowNull: false
         }
     }, {

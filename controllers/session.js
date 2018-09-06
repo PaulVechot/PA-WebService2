@@ -1,7 +1,19 @@
 'use strict';
 
-// const express = require('express');
-// //const bodyParser = require('body-parser');
-// const controllers = require('../controllers');
-//
-// var session = require('express-session');
+const ModelIndex = require('../models');
+const Session = ModelIndex.Session;
+const User = ModelIndex.User;
+const SessionController = function() {};
+
+
+SessionController.checker = function(user) {
+    return User.find({
+      where:{
+        username: user.username,
+        password: user.password
+      }
+    });
+};
+
+
+module.exports = SessionController;

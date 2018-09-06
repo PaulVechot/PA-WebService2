@@ -9,7 +9,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const controllers = require('../controllers');
 const bodyParser = require('body-parser');
-const SessionControler = controllers.SessionController;
+const SessionController = controllers.SessionController;
 
 const SessionRouter = express.Router();
 SessionRouter.use(bodyParser.json());
@@ -20,19 +20,17 @@ SessionRouter.get('/', function(req, res) {
     message: 'welcome tt'
   });
 });
-SessionRouter.post('/', (req, res) => {
-  console.log(req);
-  const user = {
-    username: req.body.username,
-    password: req.body.password
-  };
-  if ((user.username === 'paul.vechot@gmail.com') && (user.password === 'toto')) {
-    res.json({
-      message: 'ok'
-    });
 
-  }
+SessionRouter.post('/', (req, res) => {
+  SessionController.checker(req.body.username,req.body.password)
+  .then((session) => {
+    res.status(201).json(session);
+  })
+  .catch((err) => {
+    res.status(500).end();
+  });
 });
+
 //
 // SessionRouter.post('/', (req, res) => {
 //   const user = {

@@ -19,7 +19,6 @@ ConfigurationRouter.get('/', function(req, res) {
     });
 });
 
-
 ConfigurationRouter.post('/', function(req, res) {
   const id = req.body.id;
   const label = req.body.label;

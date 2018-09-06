@@ -27,10 +27,10 @@ Analysis_resultController.getAll = function() {
           'catch': function (callback) { /* NO ERROR WILL HAPPEN IN THE STUB */ }
       };
   };
-Analysis_resultController.add = function(id, datetime) {
+Analysis_resultController.add = function(id, date_time) {
     return Analysis_result.create({
         id: id,
-        datetime: datetime
+        date_time: date_time
     });
 };
 /**
