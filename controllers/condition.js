@@ -11,10 +11,9 @@ ConditionController.getAll = function() {
   });
 };
 ConditionController.add = function(condition, id) {
-console.log(condition)
-  JSON.parse(condition)
   console.log(condition)
-  console.log(condition.opLeft, condition.comparison);
+  console.log(condition.opLeft, condition.comparison, condition.opRight);
+  
     return Condition.create({
         id: 0,
         op_left: condition.opLeft,
