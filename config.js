@@ -17,5 +17,16 @@ config.db.host = 'localhost';
 config.db.dialect = 'mysql';
 config.db.port = '3306';
 
+//Log Configuration
+config.log = {};
 
+//For each table
+config.log.log_location = "E:/Documents/GitHub/PA-WebService/log/";
+config.log.logall_location = "E:/Documents/GitHub/PA-WebService/log/logall.txt";
 module.exports = config;
+
+//error message
+config.err = {};
+
+config.err.e500 = "High chance, already present";
+config.err.e400 = "High chance, entry undefined";

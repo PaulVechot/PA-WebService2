@@ -1,6 +1,8 @@
 'use strict';
 
 const ModelIndex = require('../models');
+const fs = require('fs');
+const config = require('../config');
 const Analysis_result = ModelIndex.Analysis_result;
 
 const Analysis_resultController = function() {};
@@ -33,6 +35,15 @@ Analysis_resultController.add = function(id, date_time) {
         date_time: date_time
     });
 };
+Analysis_resultController.log = function(){
+  const date = Date.now();
+  fs.writeFile(config.log.location + "analysis_result.txt", date + "/n" + undefined , function(err) {
+    if(err) {
+        return console.log(err);
+    }
+    console.log("The file was saved!");
+  });
+}
 /**
  * Gets stats related to an analysis result, based on result ID
  * @param {Integer} resultId - The ID of the result to get the stats of

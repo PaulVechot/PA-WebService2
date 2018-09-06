@@ -10,7 +10,9 @@ const jwt = require('jsonwebtoken');
 const controllers = require('../controllers');
 const bodyParser = require('body-parser');
 const SessionController = controllers.SessionController;
-const UserController = controllers.UserController
+const UserController = controllers.UserController;
+const config = require('../config');
+const LoggerController = controllers.LoggerController;
 
 const SessionRouter = express.Router();
 SessionRouter.use(bodyParser.json());
@@ -26,6 +28,7 @@ SessionRouter.post('/', (req, res) => {
   console.log(req.body.password);
   if(req.body.username === undefined || req.body.username === undefined) {
    res.status(400).end();
+   LoggerController.log("analysis_result.txt", config.err.e400);
     return;
   }
   UserController.authorise(req.body.username, req.body.password)
@@ -34,6 +37,7 @@ SessionRouter.post('/', (req, res) => {
   })
   .catch((err) => {
     res.status(500).end();
+    LoggerController.log("analysis_result.txt", config.err.e500);
   });
 });
 

@@ -3,7 +3,7 @@
 module.exports = {
     Access_informationController: require('./access_information'),
     Analysis_resultController: require('./analysis_result'),
-    AssociationtController: require('./association'),
+    AssociationController: require('./association'),
     ConditionController: require('./condition'),
     Configuration_setController: require('./configuration_set'),
     Data_setController: require('./data_set'),
@@ -12,4 +12,5 @@ module.exports = {
     StatController: require('./stat'),
     Statistical_dataController: require('./statistical_data'),
     UserController: require('./user'),
+    LoggerController: require('./logger')
   };

@@ -3,6 +3,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const controllers = require('../controllers');
+const config = require('../config');
+
+const LoggerController = controllers.LoggerController;
 const Configuration_setController = controllers.Configuration_setController;
 
 const ConfigurationRouter = express.Router();
@@ -24,6 +27,7 @@ ConfigurationRouter.post('/', function(req, res) {
   const label = req.body.label;
   if(id === undefined || label === undefined) {
    res.status(400).end();
+   LoggerController.log("analysis_result.txt", config.err.e400);
     return;
   }
   Configuration_setController.add(parseInt(id), label)
@@ -32,6 +36,7 @@ ConfigurationRouter.post('/', function(req, res) {
   })
   .catch((err) => {
     res.status(500).end();
+    LoggerController.log("analysis_result.txt", config.err.e500);
   });
 });
 
