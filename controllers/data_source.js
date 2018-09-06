@@ -10,11 +10,12 @@ Data_sourceController.getAll = function() {
     return JSON.stringify(Data_source);
   });
 };
-Data_sourceController.add = function(id, label, type) {
+Data_sourceController.add = function(data_Source, id) {
     return Data_source.create({
-        id: id,
-        label: label,
-        type: type
+        id: 0,
+        label: data_Source.label,
+        type: data_Source.type,
+        Configuration_set_id : id
     });
 };
 

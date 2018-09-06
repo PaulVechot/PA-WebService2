@@ -20,6 +20,7 @@ Analysis_resultController.add = function(id, date_time) {
     });
 };
 module.exports = Analysis_resultController;
+
 // // TODO STUB
 //     return {
 //         'then': function (callback) {

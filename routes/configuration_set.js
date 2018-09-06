@@ -7,6 +7,11 @@ const config = require('../config');
 
 const LoggerController = controllers.LoggerController;
 const Configuration_setController = controllers.Configuration_setController;
+const selected_dataController = controllers.Selected_dataController;
+const Data_SourceController = controllers.Data_SourceController;
+const Access_informationController = controllers.Access_informationController;
+const ConditionController = controllers.ConditionController;
+const AssociationController = controllers.AssociationController;
 
 const ConfigurationRouter = express.Router();
 ConfigurationRouter.use(bodyParser.json());
@@ -23,14 +28,28 @@ ConfigurationRouter.get('/', function(req, res) {
 });
 
 ConfigurationRouter.post('/', function(req, res) {
+
   const id = req.body.id;
   const label = req.body.label;
+
+  const condition = JSON.stringify(req.body.conditions);
+  //console.log(condition);
+  const association = req.body.associations;
+  const selected_data = req.body.selectedData;
+  const data_Source = req.body.dataSources;
+  const access_information = req.body.accessInfo;
+
   if(id === undefined || label === undefined) {
    res.status(400).end();
    LoggerController.log("configuration_set.txt", config.err.e400);
     return;
   }
   Configuration_setController.add(parseInt(id), label)
+  .then(ConditionController.add(condition, id))
+  .then(AssociationController.add(association, id))
+  .then(selected_dataController.add(selected_data, id))
+  .then(Data_SourceController.add(data_Source, id))
+  .then(Access_informationController.add(access_information, id))
   .then((configuration_set) => {
     res.status(201).json(configuration_set);
   })

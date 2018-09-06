@@ -10,11 +10,12 @@ Access_informationController.getAll = function() {
     return JSON.stringify(Access_information);
   });
 };
-Access_informationController.add = function(id, key, value) {
+Access_informationController.add = function(access_information, id) {
     return Access_information.create({
-        id: id,
-        key: key,
-        value: value
+        id: 0,
+        key: access_information.key,
+        value: access_information.value,
+        Configuration_set_id : id
     });
 };
 

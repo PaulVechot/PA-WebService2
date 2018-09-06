@@ -1,5 +1,2 @@
-function (){
-  var datetime = LoggerController.dateFr() + " "  +
-                 LoggerController.time() + "\n";
-  return datetime;
-}High chance, entry undefined
+jeudi 6 septembre  23h10
+{"id":0,"label":"configSetTest","conditions":[{"opLeft":"opLeft1","opRight":"opRight1","comparison":"Comparison"}],"associations":[{"field1":"field1","field2":"fiels2"}],"selectedData":[{"field":"fieldSelectedData","operation":"operation"}],"dataSources":[{"label":"DataSource1","type":"int","accessInfo":{}}]}

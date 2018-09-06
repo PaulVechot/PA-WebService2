@@ -13,21 +13,13 @@ AssociationController.getAll = function() {
     return JSON.stringify(Association);
   });
 };
-AssociationController.add = function(id, field1, field2) {
+AssociationController.add = function(association, id) {
     return Association.create({
-        id: id,
-        field1: field1,
-        field2: field2
+        id: 0,
+        field1: association.field1,
+        field2: association.field2,
+        Configuration_set_id : id
     });
-};
-AssociationController.log = function(){
-  const date = Date.now();
-  fs.writeFile(config.log.location + "association", date , function(err) {
-    if(err) {
-        return console.log(err);
-    }
-    console.log("The file was saved!");
-  });
 };
 
   module.exports = AssociationController;

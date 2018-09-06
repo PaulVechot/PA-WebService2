@@ -10,13 +10,27 @@ ConditionController.getAll = function() {
     return JSON.stringify(Condition);
   });
 };
-ConditionController.add = function(id, op_left, comparaison, op_right) {
+ConditionController.add = function(condition, id) {
+console.log(condition)
+  JSON.parse(condition)
+  console.log(condition)
+  console.log(condition.opLeft, condition.comparison);
     return Condition.create({
-        id: id,
-        op_left: op_left,
-        comparaison: comparaison,
-        op_right: op_right
+        id: 0,
+        op_left: condition.opLeft,
+        comparison: condition.comparison,
+        op_right: condition.opRight,
+        Configuration_set_id: id
     });
 };
+
+// var user = {name: 'Corbin', age: 20, location: 'USA'},
+//     key;
+//
+// for (key in user) {
+//     if (user.hasOwnProperty(key)) {
+//         console.log(key + " = " + user[key]);
+//     }
+// }
 
   module.exports = ConditionController;

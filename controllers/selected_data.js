@@ -10,11 +10,12 @@ Selected_dataController.getAll = function() {
     return JSON.stringify(Selected_data);
   });
 };
-Selected_dataController.add = function(id, field, operation) {
+Selected_dataController.add = function(selected_data, id) {
     return Selected_data.create({
-        id: id,
-        field: field,
-        operation: operation
+        id: 0,
+        field: selected_data.field,
+        operation: selected_data.operation,
+        Configuration_set_id : id
     });
 };
 
