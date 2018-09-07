@@ -4,6 +4,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const controllers = require('../controllers');
 const config = require('../config');
+const busboyBodyParser = require('busboy-body-parser');
+
 
 const LoggerController = controllers.LoggerController;
 const Configuration_setController = controllers.Configuration_setController;
@@ -15,7 +17,7 @@ const AssociationController = controllers.AssociationController;
 
 const ConfigurationRouter = express.Router();
 ConfigurationRouter.use(bodyParser.json());
-
+//ConfigurationRouter.use(busboyBodyParser({multi: true}));
 ConfigurationRouter.get('/', function(req, res) {
     Configuration_setController.getAll()
     .then((configuration_set) => {
@@ -28,24 +30,13 @@ ConfigurationRouter.get('/', function(req, res) {
 });
 
 ConfigurationRouter.post('/', function(req, res) {
-var toto = JSON.parse(JSON.stringify(req.body));
-//console.log(toto);
-for(var i = 0; i < toto.length; i++){
-    console.log(toto[i]); // Object with id and time
-}
-  // const id = toto.id;
-  // console.log(id);
-  // console.log(toto.conditions.opLeft);
-  // const label = req.body.label;
-  //
-  // const condition = req.body.conditions;
-  // console.log(req.body);
-  // console.log(req.body.conditions.opLeft);
-  // const association = req.body.associations;
-  // const selected_data = req.body.selectedData;
-  // const data_Source = req.body.dataSources;
-  // const access_information = req.body.accessInfo;
-  console.log(condition.opLeft, condition.comparison, condition.opRight);
+  const id = req.body.id;
+  const label = req.body.label;
+  const condition = req.body.conditions;
+  const association = req.body.associations;
+  const selected_data = req.body.selectedData;
+  const data_Source = req.body.dataSources;
+  const access_information = req.body.accessInfo;
   if(id === undefined || label === undefined) {
    res.status(400).end();
    LoggerController.log("configuration_set.txt", config.err.e400);

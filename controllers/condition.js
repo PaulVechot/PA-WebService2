@@ -12,15 +12,19 @@ ConditionController.getAll = function() {
 };
 ConditionController.add = function(condition, id) {
   console.log(condition)
-  console.log(condition.opLeft, condition.comparison, condition.opRight);
-  
-    return Condition.create({
-        id: 0,
-        op_left: condition.opLeft,
-        comparison: condition.comparison,
-        op_right: condition.opRight,
-        Configuration_set_id: id
-    });
+  for (var i = 0; i < condition.length; i++) {
+    console.log(condition[i]);
+    console.log(condition[i].opLeft);
+    Condition.create({
+       id: 0,
+       op_left: condition[i].opLeft,
+       comparison: condition[i].comparison,
+       op_right: condition[i].opRight,
+       Configuration_set_id: id
+   });
+  }
+  req.body.conditions[0].opLeft
+
 };
 
 // var user = {name: 'Corbin', age: 20, location: 'USA'},
