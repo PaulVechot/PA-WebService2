@@ -1,20 +1,20 @@
 'use strict';
 
 const ModelIndex = require('../models');
-const Configuration_set = ModelIndex.Configuration_set;
+const Configuration_set = ModelIndex.Configuration_set;;
 
 const Configuration_setController = function() {};
 
 Configuration_setController.getAll = function() {
   return Configuration_set.findAll();
 };
-Configuration_setController.getId = function(label) {
-  console.log(label);
-  Configuration_set.findAll({
-    where: {created_at: label}
-  });
-  };
-
+// Configuration_setController.getId = function(label) {
+//   console.log(label);
+//     Configuration_set.query("SELECT MAX(created_at) from configuration_set")
+//     .spread((results, metadata) => {console.log(metadata);
+//     });
+//   };
+//
 
 //SELECT MAX(ID) from bugs WHERE user=Me
 

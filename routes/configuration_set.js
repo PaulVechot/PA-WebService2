@@ -42,10 +42,10 @@ ConfigurationRouter.post('/', function(req, res) {
    LoggerController.log("configuration_set.txt", config.err.e400);
     return;
   }
-  Configuration_setController.add(parseInt(id), label)
-  console.log(label)
+  var toto = Configuration_setController.add(parseInt(id), label)
+  console.log(toto)
   configuration_setID = Configuration_setController.getId(label)
-  console.log(configuration_setID)
+  //console.log(configuration_setID)
   .then(ConditionController.add(condition, configuration_setID))
   .then(AssociationController.add(association, configuration_setID))
   .then(selected_dataController.add(selected_data, configuration_setID))
