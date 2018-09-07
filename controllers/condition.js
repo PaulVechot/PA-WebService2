@@ -11,21 +11,16 @@ ConditionController.getAll = function() {
   });
 };
 
-ConditionController.add = function(condition, id) {
-  console.log(condition);
-  console.log(id);
-  for (var i = 0; i < condition.length; i++) {
-    console.log(condition[i]);
-    console.log(condition[i].opLeft);
+ConditionController.add = function(condition,cfId) {
+  for (var i = 0; i < condition.length; i+=1) {
     Condition.create({
        id: 0,
        op_left: condition[i].opLeft,
        comparison: condition[i].comparison,
        op_right: condition[i].opRight,
-       Configuration_set_id: id
+       Configuration_set_id: cfId
    });
   }
-
 };
 
 // var user = {name: 'Corbin', age: 20, location: 'USA'},

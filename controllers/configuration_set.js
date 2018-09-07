@@ -1,20 +1,24 @@
 'use strict';
 
 const ModelIndex = require('../models');
-const Configuration_set = ModelIndex.Configuration_set;;
+const Configuration_set = ModelIndex.Configuration_set;
 
 const Configuration_setController = function() {};
 
 Configuration_setController.getAll = function() {
   return Configuration_set.findAll();
 };
-// Configuration_setController.getId = function(label) {
-//   console.log(label);
-//     Configuration_set.query("SELECT MAX(created_at) from configuration_set")
-//     .spread((results, metadata) => {console.log(metadata);
-//     });
-//   };
-//
+Configuration_setController.getId = function() {
+  //console.log();
+  var quer = "SELECT id from configuration_set cs1 where cs1.created_at=(SELECT MAX(cs2.created_at) from configuration_set cs2)";
+  return ModelIndex.sequelize
+    .query(quer,{ type: ModelIndex.sequelize.QueryTypes.SELECT})
+    .then(function(row){
+      console.log(row[0]);
+      return row[0];
+    });
+}
+
 
 //SELECT MAX(ID) from bugs WHERE user=Me
 
@@ -45,9 +49,9 @@ Configuration_setController.getAll = function() {
 //   }
 //   return Configuration_setController.findAll(options);
 // };
-Configuration_setController.add = function(id, label) {
+Configuration_setController.add = function(label) {
     return Configuration_set.create({
-        id: id,
+        id: 0,
         label: label
     });
 };

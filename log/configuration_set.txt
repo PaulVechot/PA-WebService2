@@ -1,2 +1,2 @@
-jeudi 6 septembre  23h10
-{"id":0,"label":"configSetTest","conditions":[{"opLeft":"opLeft1","opRight":"opRight1","comparison":"Comparison"}],"associations":[{"field1":"field1","field2":"fiels2"}],"selectedData":[{"field":"fieldSelectedData","operation":"operation"}],"dataSources":[{"label":"DataSource1","type":"int","accessInfo":{}}]}
+vendredi 7 septembre  17h40
+High chance, already presentTypeError: Cannot read property 'length' of undefined

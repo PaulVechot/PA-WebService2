@@ -7,7 +7,7 @@ module.exports = {
     ConditionController: require('./condition'),
     Configuration_setController: require('./configuration_set'),
     Data_setController: require('./data_set'),
-    Data_sourceController: require('./data_source'),
+    Data_SourceController: require('./data_source'),
     Selected_dataController: require('./selected_data'),
     StatController: require('./stat'),
     Statistical_dataController: require('./statistical_data'),

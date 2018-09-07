@@ -10,13 +10,15 @@ Selected_dataController.getAll = function() {
     return JSON.stringify(Selected_data);
   });
 };
-Selected_dataController.add = function(selected_data, id) {
-    return Selected_data.create({
+Selected_dataController.add = function(selected_data, cfId) {
+  for (var i = 0; i < selected_data.length; i+=1) {
+     Selected_data.create({
         id: 0,
-        field: selected_data.field,
-        operation: selected_data.operation,
-        Configuration_set_id : id
+        field: selected_data[i].field,
+        operation: selected_data[i].operation,
+        Configuration_set_id : cfId
     });
+  }
 };
 
   module.exports = Selected_dataController;

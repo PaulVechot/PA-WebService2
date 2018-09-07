@@ -9,7 +9,7 @@ const busboyBodyParser = require('busboy-body-parser');
 
 const LoggerController = controllers.LoggerController;
 const Configuration_setController = controllers.Configuration_setController;
-const selected_dataController = controllers.Selected_dataController;
+const Selected_dataController = controllers.Selected_dataController;
 const Data_SourceController = controllers.Data_SourceController;
 const Access_informationController = controllers.Access_informationController;
 const ConditionController = controllers.ConditionController;
@@ -30,35 +30,32 @@ ConfigurationRouter.get('/', function(req, res) {
 });
 
 ConfigurationRouter.post('/', function(req, res) {
-  const id = req.body.id;
+  //const id = req.body.id;
   const label = req.body.label;
   const condition = req.body.conditions;
   const association = req.body.associations;
   const selected_data = req.body.selectedData;
-  const data_Source = req.body.dataSources;
-  const access_information = req.body.accessInfo;
-  if(id === undefined || label === undefined) {
+  const data_source = req.body.dataSources;
+
+  if(label === undefined) {
    res.status(400).end();
    LoggerController.log("configuration_set.txt", config.err.e400);
     return;
   }
-  var toto = Configuration_setController.add(parseInt(id), label)
-  console.log(toto)
-  configuration_setID = Configuration_setController.getId(label)
-  //console.log(configuration_setID)
-  .then(ConditionController.add(condition, configuration_setID))
-  .then(AssociationController.add(association, configuration_setID))
-  .then(selected_dataController.add(selected_data, configuration_setID))
-  .then(Data_SourceController.add(data_Source, configuration_setID))
-  .then(Access_informationController.add(access_information, configuration_setID))
-  .then((configuration_set) => {
-    res.status(201).json(configuration_set);
-  })
-  .catch((err) => {
-    res.status(500).end();
-    LoggerController.log("configuration_set.txt", config.err.e500);
-  });
+  console.log(data_source);
+  Configuration_setController.add(label)
+    .then(result => {
+      ConditionController.add(condition, result.id);
+      AssociationController.add(association, result.id);
+      Selected_dataController.add(selected_data, result.id);
+      Data_SourceController.add(data_source, result.id);
+    })
+    .then((configuration_set) => {
+      res.status(201).json(configuration_set);
+    })
+    .catch((err) => {
+      res.status(500).end();
+      LoggerController.log("configuration_set.txt", config.err.e500+err);
+    });
 });
-
-
 module.exports = ConfigurationRouter;

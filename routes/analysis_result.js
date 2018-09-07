@@ -11,15 +11,26 @@ const Analysis_resultRouter = express.Router();
 
 Analysis_resultRouter.use(bodyParser.json());
 
+// Analysis_resultRouter.get('/', function(req, res) {
+//     Analysis_resultController.getAll()
+//     .then((analysis_result) => {
+//         res.json(analysis_result);
+//     })
+//     .catch((err) => {
+//         console.error(err);
+//         res.status(500).end();
+//         LoggerController.log("analysis_result.txt", config.err.e500);
+//     });
+// });
+
 Analysis_resultRouter.get('/', function(req, res) {
-    Analysis_resultController.getAll()
-    .then((analysis_result) => {
-        res.json(analysis_result);
+    Analysis_resultController.getStatsFor(req.params.resultId)
+    .then((stats) => {
+        res.json(stats);
     })
     .catch((err) => {
         console.error(err);
         res.status(500).end();
-        LoggerController.log("analysis_result.txt", config.err.e500);
     });
 });
 

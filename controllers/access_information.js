@@ -10,13 +10,15 @@ Access_informationController.getAll = function() {
     return JSON.stringify(Access_information);
   });
 };
-Access_informationController.add = function(access_information, id) {
-    return Access_information.create({
+Access_informationController.add = function(access_information, dsId) {
+  for (var i = 0; i < access_information.length; i+=1) {
+    Access_information.create({
         id: 0,
-        key: access_information.key,
-        value: access_information.value,
-        Configuration_set_id : id
+        key: access_information[i].key,
+        value: access_information[i].value,
+        Data_source_id : dsId
     });
+  }
 };
 
   module.exports = Access_informationController;
