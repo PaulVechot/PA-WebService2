@@ -10,8 +10,10 @@ ConditionController.getAll = function() {
     return JSON.stringify(Condition);
   });
 };
+
 ConditionController.add = function(condition, id) {
-  console.log(condition)
+  console.log(condition);
+  console.log(id);
   for (var i = 0; i < condition.length; i++) {
     console.log(condition[i]);
     console.log(condition[i].opLeft);
@@ -23,7 +25,6 @@ ConditionController.add = function(condition, id) {
        Configuration_set_id: id
    });
   }
-  req.body.conditions[0].opLeft
 
 };
 

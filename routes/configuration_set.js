@@ -43,11 +43,14 @@ ConfigurationRouter.post('/', function(req, res) {
     return;
   }
   Configuration_setController.add(parseInt(id), label)
-  .then(ConditionController.add(condition, id))
-  .then(AssociationController.add(association, id))
-  .then(selected_dataController.add(selected_data, id))
-  .then(Data_SourceController.add(data_Source, id))
-  .then(Access_informationController.add(access_information, id))
+  console.log(label)
+  configuration_setID = Configuration_setController.getId(label)
+  console.log(configuration_setID)
+  .then(ConditionController.add(condition, configuration_setID))
+  .then(AssociationController.add(association, configuration_setID))
+  .then(selected_dataController.add(selected_data, configuration_setID))
+  .then(Data_SourceController.add(data_Source, configuration_setID))
+  .then(Access_informationController.add(access_information, configuration_setID))
   .then((configuration_set) => {
     res.status(201).json(configuration_set);
   })

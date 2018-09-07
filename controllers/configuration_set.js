@@ -8,6 +8,17 @@ const Configuration_setController = function() {};
 Configuration_setController.getAll = function() {
   return Configuration_set.findAll();
 };
+Configuration_setController.getId = function(label) {
+  console.log(label);
+  Configuration_set.findAll({
+    where: {created_at: label}
+  });
+  };
+
+
+//SELECT MAX(ID) from bugs WHERE user=Me
+
+
 // Configuration_setController.getAll = function(search, limit, offset) {
 //   const options = {
 //     include: [{
